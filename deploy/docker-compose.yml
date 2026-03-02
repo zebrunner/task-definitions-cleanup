@@ -1,0 +1,9 @@
+services:
+  cleanup:
+    image: public.ecr.aws/zebrunner/task-definitions-cleanup:1.0
+    container_name: task-definitions-cleanup
+    env_file:
+      - delete-task-definitions.env
+    volumes:
+      - ./data:/data
+    restart: "no"
