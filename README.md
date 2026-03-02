@@ -14,7 +14,7 @@ If `DEFINITIONS_FILE` is missing/not found, app treats it as empty and creates i
 From project root:
 
 ```bash
-docker compose -f deploy/docker-compose.yml up --build
+docker compose -f deploy/docker-compose.yml up
 ```
 
 ## Options (`deploy/delete-task-definitions.env`)
