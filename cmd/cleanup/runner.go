@@ -189,10 +189,23 @@ func runCleanup(ctx context.Context, cfg *appConfig, awsCfg aws.Config, records 
 	}
 
 	printSummary(start, stats)
-	if err := writeResultRecords(cfg.ResultFile, records); err != nil {
-		return nil, err
+	if cfg.WriteBack {
+		if err := writeResultRecords(cfg.ResultFile, records); err != nil {
+			return nil, err
+		}
+	} else {
+		logResultRecords(records)
 	}
 	return records, nil
+}
+
+func logResultRecords(records []*definitionRecord) {
+	log.Println("")
+	log.Println("=== Results (write_back=false) ===")
+	log.Println("Identifier,deregistered,deleted,error")
+	for _, rec := range records {
+		log.Printf("%s,%s,%s,%s", rec.Identifier, rec.DeregisterStatus, rec.DeleteStatus, rec.LastError)
+	}
 }
 
 func shouldProcessStatus(status string, retryFailedOnly bool) bool {

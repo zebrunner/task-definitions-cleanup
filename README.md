@@ -23,7 +23,7 @@ docker compose -f deploy/docker-compose.yml up
 - `AWS_REGION=...`
 - `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` / `AWS_SESSION_TOKEN` (optional static creds)
 - `DEFINITIONS_FILE=/data/definitions.csv` (or `/data/any-name.csv`)
-- `WRITE_BACK=true|false` (default true when `DEFINITIONS_FILE` is set)
+- `WRITE_BACK=true|false` (default true when `DEFINITIONS_FILE` is set). When `false`, no CSV files are written and results are printed to console.
 - `RESULT_FILE=/data/definitions.result.csv`
 - `RETRY_FAILED_ONLY=true|false` (process only `*-fail` rows)
 - `API_RPS=1` (max mutating ECS calls per second; helps avoid API throttling)
