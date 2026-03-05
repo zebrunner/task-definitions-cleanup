@@ -17,6 +17,13 @@ From project root:
 docker compose -f deploy/docker-compose.yml up
 ```
 
+If you get `permission denied` for `open /data/...` on EC2/Linux bind mounts, fix folder/file mode from `deploy/`:
+
+```bash
+sudo chmod 775 data
+sudo chmod 664 data/definitions.csv
+```
+
 ## Options (`deploy/delete-task-definitions.env`)
 
 - `ACTION=both|deregister|delete`
