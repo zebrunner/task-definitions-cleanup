@@ -14,7 +14,7 @@ If `DEFINITIONS_FILE` is missing/not found, app treats it as empty and creates i
 From project root:
 
 ```bash
-docker compose -f deploy/docker-compose.yml up
+docker compose -f deploy/docker-compose.yml up -d
 ```
 
 If you get `permission denied` for `open /data/...` on EC2/Linux bind mounts, fix folder/file mode from `deploy/`:
